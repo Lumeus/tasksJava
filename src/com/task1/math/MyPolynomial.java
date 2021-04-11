@@ -55,8 +55,8 @@ public class MyPolynomial {
     }
 
     public MyPolynomial multiply(MyPolynomial right) {
-        int degreeOfThis = this.coeffs.length;
-        int degreeOfRight = right.coeffs.length;
+        final int degreeOfThis = this.coeffs.length;
+        final int degreeOfRight = right.coeffs.length;
         double[] newCoeffs = new double[degreeOfThis + degreeOfRight - 1];
         for (int i = 0; i < degreeOfThis; i++ ) {
             for (int j = 0; j < degreeOfRight; j++) {
