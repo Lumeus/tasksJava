@@ -55,14 +55,14 @@ public class MyPolynomial {
     }
 
     public MyPolynomial multiply(MyPolynomial right) {
-        int I = this.coeffs.length;
-        int J = right.coeffs.length;
-        double[] coeffs = new double[I + J - 1];
-        for (int i = 0; i < I; i++ ) {
-            for (int j = 0; j < J; j++) {
-                coeffs[i+j] += this.coeffs[i] * right.coeffs[j];
+        int degreeOfThis = this.coeffs.length;
+        int degreeOfRight = right.coeffs.length;
+        double[] newCoeffs = new double[degreeOfThis + degreeOfRight - 1];
+        for (int i = 0; i < degreeOfThis; i++ ) {
+            for (int j = 0; j < degreeOfRight; j++) {
+                newCoeffs[i+j] += this.coeffs[i] * right.coeffs[j];
             }
         }
-        return new MyPolynomial(coeffs);
+        return new MyPolynomial(newCoeffs);
     }
 }
