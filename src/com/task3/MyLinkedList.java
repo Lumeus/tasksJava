@@ -39,6 +39,7 @@ public class MyLinkedList<E> implements ILinkedList<E> {
         nextNode = prevNode.getNextNode();
         prevNode.setNextNode(newNode);
         newNode.setNextNode(nextNode);
+        if (index == size) last = newNode;
         size++;
     }
 
@@ -68,7 +69,7 @@ public class MyLinkedList<E> implements ILinkedList<E> {
         int res = 0;
         Node<E> node = first;
         while (node != null) {
-            if (node.getElement() == element) {
+            if (node.getElement().equals(element)) {
                 return res;
             }
             node = node.getNextNode();
@@ -79,8 +80,19 @@ public class MyLinkedList<E> implements ILinkedList<E> {
 
     @Override
     public E remove(int index) {
-        if (index > size || index < 0) throw new IndexOutOfBoundsException();
+        if (index >= size || index < 0) throw new IndexOutOfBoundsException();
         Node<E> prevNode = first;
+        if (index == 0) {
+            first = first.getNextNode();
+            E res = prevNode.getElement();
+            prevNode.setElement(null);
+            prevNode.setNextNode(null);
+            size--;
+            if (index == size) {
+                last = first;
+            }
+            return res;
+        }
         Node<E> nextNode;
         for (int i = 0; i < index - 1; i++) {
             prevNode = prevNode.getNextNode();
@@ -92,6 +104,9 @@ public class MyLinkedList<E> implements ILinkedList<E> {
         prevNode.getNextNode().setNextNode(null);
         prevNode.setNextNode(nextNode);
         size--;
+        if (index == size) {
+            last = prevNode;
+        }
         return res;
     }
 
@@ -112,12 +127,22 @@ public class MyLinkedList<E> implements ILinkedList<E> {
         return size;
     }
 
-//////////////////////////////////////////////////////////////////////////////////////
     @Override
     public <T> T[] toArray(T[] a) {
-        return null;
+        if (a.length < size)
+            a = (T[])java.lang.reflect.Array.newInstance(
+                    a.getClass().getComponentType(), size);
+
+        int i = 0;
+        Object[] result = a;
+        for (Node<E> x = first; x != null; x = x.getNextNode())
+            result[i++] = x.getElement();
+
+        if (a.length > size)
+            a[size] = null;
+
+        return a;
     }
-//////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public String toString() {

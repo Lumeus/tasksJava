@@ -1,15 +1,16 @@
 package com.task3;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class MyIterator<E> implements Iterator<E> {
-    private MyLinkedList<E> list;
+    private final MyLinkedList<E> list;
     private Node<E> prevNode = null;
     private Node<E> currentNode = null;
     private Node<E> nextNode;
     private boolean removeErrorFlag = true;
 
-    public MyIterator(MyLinkedList<E> list, Node<E> nextNode) {
+    MyIterator(MyLinkedList<E> list, Node<E> nextNode) {
         this.list = list;
         this.nextNode = nextNode;
     }
@@ -21,6 +22,7 @@ public class MyIterator<E> implements Iterator<E> {
 
     @Override
     public E next() {
+        if (nextNode == null) { throw new NoSuchElementException(); }
         prevNode = currentNode;
         currentNode = nextNode;
         nextNode = currentNode.getNextNode();
@@ -31,9 +33,17 @@ public class MyIterator<E> implements Iterator<E> {
     @Override
     public void remove() {
         if (removeErrorFlag) { throw new IllegalStateException(); }
+        if (prevNode == null) {
+            list.first = nextNode;
+        }
+        else {
+            prevNode.setNextNode(nextNode);
+        }
         currentNode.setElement(null);
+        currentNode.setNextNode(null);
         currentNode = prevNode;
         prevNode = null;
-        currentNode.setNextNode(nextNode);
+        list.size--;
+        removeErrorFlag = true;
     }
 }
