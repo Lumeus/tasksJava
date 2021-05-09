@@ -54,12 +54,12 @@ public class TestList {
                                 50,
                                 100, 100, 150, 150, 200, 200, 250, 250, 300, 300, 350, 350},
                         30);
-                g.drawString("100", 25, 355);
-                g.drawString("200", 25, 305);
-                g.drawString("300", 25, 255);
-                g.drawString("400", 25, 205);
-                g.drawString("500", 25, 155);
-                g.drawString("600", 25, 105);
+                g.drawString("25", 25, 355);
+                g.drawString("50", 25, 305);
+                g.drawString("75", 25, 255);
+                g.drawString("100", 25, 205);
+                g.drawString("125", 25, 155);
+                g.drawString("150", 25, 105);
                 g.drawString("ms", 30, 55);
                 g.drawString("add", 92, 415);
                 g.drawString("add with", 130, 415);
@@ -85,17 +85,17 @@ public class TestList {
                 g.setColor(Color.RED);
                 g.drawString("MyLinkedList", 15, 450);
                 g.drawPolyline(new int[]{100, 150, 200, 250, 300, 350},
-                        Arrays.stream(myResult).map(x -> 400 - x / 2000000).toArray(),
+                        Arrays.stream(myResult).map(x -> 400 - x / 500000).toArray(),
                         6);
                 g.setColor(Color.BLUE);
                 g.drawString("LinkedList", 15, 475);
                 g.drawPolyline(new int[]{100, 150, 200, 250, 300, 350},
-                        Arrays.stream(linkedResult).map(x -> 400 - x / 2000000).toArray(),
+                        Arrays.stream(linkedResult).map(x -> 400 - x / 500000).toArray(),
                         6);
                 g.setColor(Color.YELLOW);
                 g.drawString("ArrayList", 15, 500);
                 g.drawPolyline(new int[]{100, 150, 200, 250, 300, 350},
-                        Arrays.stream(arrayResult).map(x -> 400 - x / 2000000).toArray(),
+                        Arrays.stream(arrayResult).map(x -> 400 - x / 500000).toArray(),
                         6);
             }
         };

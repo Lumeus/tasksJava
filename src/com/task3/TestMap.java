@@ -48,12 +48,12 @@ public class TestMap {
                                 50,
                                 100, 100, 150, 150, 200, 200, 250, 250, 300, 300, 350, 350},
                         30);
-                g.drawString("0,25", 25, 355);
-                g.drawString("0,50", 25, 305);
-                g.drawString("0,75", 25, 255);
-                g.drawString("1,00", 25, 205);
-                g.drawString("1,25", 25, 155);
-                g.drawString("1,50", 25, 105);
+                g.drawString("0,2", 25, 355);
+                g.drawString("0,4", 25, 305);
+                g.drawString("0,6", 25, 255);
+                g.drawString("0,8", 25, 205);
+                g.drawString("1,0", 25, 155);
+                g.drawString("1,2", 25, 105);
                 g.drawString("ms", 30, 55);
                 g.drawString("put", 142, 415);
                 g.drawString("get", 242, 415);
@@ -75,17 +75,17 @@ public class TestMap {
                 g.setColor(Color.RED);
                 g.drawString("HashMap", 15, 450);
                 g.drawPolyline(new int[]{150, 250, 350},
-                        Arrays.stream(hashResult).map(x -> 400 - x / 5000).toArray(),
+                        Arrays.stream(hashResult).map(x -> 400 - x / 4000).toArray(),
                         3);
                 g.setColor(Color.BLUE);
                 g.drawString("LinkedHashMap", 15, 475);
                 g.drawPolyline(new int[]{150, 250, 350},
-                        Arrays.stream(linkedResult).map(x -> 400 - x / 5000).toArray(),
+                        Arrays.stream(linkedResult).map(x -> 400 - x / 4000).toArray(),
                         3);
                 g.setColor(Color.YELLOW);
                 g.drawString("TreeMap", 15, 500);
                 g.drawPolyline(new int[]{150, 250, 350},
-                        Arrays.stream(treeResult).map(x -> 400 - x / 5000).toArray(),
+                        Arrays.stream(treeResult).map(x -> 400 - x / 4000).toArray(),
                         3);
             }
         };
